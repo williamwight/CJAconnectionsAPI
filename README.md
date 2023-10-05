@@ -5,6 +5,11 @@ description: Manage CJA connections through APIs
 
 # Connections
 
+This guide includes instructions for using the following endpoints:
+
+* GET connection by ID: Retrieve a specific connection by connection ID
+* GET all connections: Retrieve all connections for an organization
+
 ## GET connection by ID
 
 Use this endpoint to retrieve the data for a specific connection by using the connection ID.
@@ -68,25 +73,25 @@ curl 'https://cja.adobe.io/data/connections/dg_b008fd39-2437-4d00-88fd-3924XXXXX
 
 The example above requests the following:
 
-* the information about the connection with the ID `dg_b008fd39-2437-4d00-88fd-3924XXXXXXXX`.
-* the `dataSets` associated with the connection.
-* the `schemaInfo` associated with the data set.
+* The information about the connection with the ID `dg_b008fd39-2437-4d00-88fd-3924XXXXXXXX`.
+* The `dataSets` associated with the connection.
+* The `schemaInfo` associated with the data set.
 
 #### Response Example Details
 
-The example above responds the following:
+The example response above shows the following:
 
-* the `dataSetId` used by the connection is `5f24c4f6ecffd1XXXXXXXXXX`.
-* the `type` of data set used is `event`.
-* the schema used by the data set is `Example Schema`.
-* the `id` of the connection is `dg_b008fd39-2437-4d00-88fd-3924XXXXXXXX`.
+* The `dataSetId` used by the connection is `5f24c4f6ecffd1XXXXXXXXXX`.
+* The `type` of data set used is `event`.
+* The name of the schema used by the data set is `Example Schema`.
+* The connection `id` is `dg_b008fd39-2437-4d00-88fd-3924XXXXXXXX`.
 
 ### Request Parameters
 
 | Name | Required | Type | Description |
 | --- | --- | --- | --- |
 | `connectionId` | required | string | The connection ID to lookup |
-| `expansion` |  | string | Comma-delimited list of additional fields to include on response. Includes the enums: `name`, `description`, `owner`, `isDeleted`, `isDisabled`, `dataSets`, `createdDate`, `modified`, `caseSensitive`, `organization`, `components`, `numDailyEvents`, `externalData`, `backfillEnabled`, `granularBackfills`, `granularStreaming`, `backfillsSummaryConnection`, `backfillsSummaryDataSets`, `dataSetLastIngested`, `sandboxName`, `sandboxId`, `fieldsId`, `floatPrecision`, `dataRetentionMonths`, `validationErrors`, `resolveIdentityNamespace`, `stitchedDataSets`, `ownerFullName`, `schemaInfo`, `tags`. |
+| `expansion` |  | string | Comma-delimited list of additional fields to include in the response. Includes the enums: `name`, `description`, `owner`, `isDeleted`, `isDisabled`, `dataSets`, `createdDate`, `modified`, `caseSensitive`, `organization`, `components`, `numDailyEvents`, `externalData`, `backfillEnabled`, `granularBackfills`, `granularStreaming`, `backfillsSummaryConnection`, `backfillsSummaryDataSets`, `dataSetLastIngested`, `sandboxName`, `sandboxId`, `fieldsId`, `floatPrecision`, `dataRetentionMonths`, `validationErrors`, `resolveIdentityNamespace`, `stitchedDataSets`, `ownerFullName`, `schemaInfo`, `tags`. |
 | `locale` |  | string | A specified locale |
 
 ### Response Parameters
@@ -111,8 +116,8 @@ The example above responds the following:
 | `lookupParentDataSetId` | string |  |
 | `lookupParentDataSetType` | string |  |
 | `identityNamespace` | string |  |
-| `usePrimaryIdNamespace` | boolean | If the primary ID namespace is used |
-| `identityMap` | boolean | If the identity map is used |
+| `usePrimaryIdNamespace` | boolean | Whether the primary ID namespace is used |
+| `identityMap` | boolean | Whether the identity map is used |
 | `name` | string | The name of the data set |
 | `schemaInfo` | container | The information of the given schema. Contains the `schemaId`, `schemaName`, and `schemaRef` parameters. |
 | `schemaId` | string | The schema ID |
@@ -127,8 +132,8 @@ The example above responds the following:
 | `startDate` | string | The starting date of the backfilled data |
 | `endDate` | string | The ending date of the backfilled data |
 | `createdDate` | string | The date the backfill was created |
-| `allData` | boolean | If all data is displayed |
-| `streaming` | boolean | If streaming is enabled |
+| `allData` | boolean | Whether all data is displayed |
+| `streaming` | boolean | Whether streaming is enabled |
 | `backfillSummary` | container | A summary of all attempted backfills. Contains the `total`, `failed`, `inProgress`, `completed`, and `invalid` parameters. |
 | `total` | integer | The number of backfills attempted |
 | `failed` | integer | The number of backfills that failed |
@@ -146,7 +151,7 @@ The example above responds the following:
 | `dataSetId` | string |  |
 | `domain` | string |  |
 | `identityNamespace` | string |  |
-| `usePrimaryIdNamespace` | boolean | If the primary namespace is used |
+| `usePrimaryIdNamespace` | boolean | Whether the primary namespace is used |
 | `identityMap` | boolean |  |
 | `identityNamespaceCol` | string |  |
 | `modifiedDate` | string | The date when the connection was last modified |
@@ -154,12 +159,12 @@ The example above responds the following:
 | `organization` | string | The org ID the connection belongs to |
 | `modifiedBy` | string | The user ID of the person who last modified the connection |
 | `modifiedByFullName` | string | The name of the person who last modified the connection |
-| `caseSensitive` | boolean | If the connection is case sensitive |
+| `caseSensitive` | boolean | Whether the connection is case sensitive |
 | `numDailyEvents` | integer | The number of daily events associated with the connection |
 | `externalData` | container | External data associated with the connection. Contains the `externalId`, and `externalParentId` parameters. |
 | `externalId` | string | The external ID of the connection |
 | `externalParentId` | string | The external ID of the connection |
-| `backfillEnabled` | boolean | If backfill is enabled |
+| `backfillEnabled` | boolean | Whether backfill is enabled |
 | `sandboxId` | string | The sandbox ID |
 | `sandboxName` | string | The sandbox name |
 | `fieldsId` | string | The fields ID |
@@ -274,19 +279,19 @@ curl 'https://cja.adobe.io/data/connections?expansion=name%2Cdescription%2Cowner
 
 The example above requests the following:
 
-* the `dataSets` associated with the connection to be displayed.
-* the `limit` of connections per page is `2`.
-* the `sortDirection` to be `DESC`, or descending.
+* The `dataSets` associated with the connection to be displayed.
+* The `limit` of connections per page is `2`.
+* The `sortDirection` to be `DESC`, or descending.
 
 #### Response Example Details
 
-The example above responds the following:
+The example response above shows the following:
 
-* the `dataSetId` used by the connections are `5f24c4f6ecffd1XXXXXXXXXX`, and `5f1873caa73caaXXXXXXXXXX`.
-* the `type` of data set used by both connections is `event`.
-* the schema used by the data sets are `Example Schema`, and `analytics_services_functional_testing_object_event`.
-* the `id` of the connections are `dg_b008fd39-2437-4d00-88fd-3924XXXXXXXX`, and `dg_7110bb3e-76ce-4201-90bb-3e76XXXXXXXX`.
-* the `totalElements` of connections for the org are `573`.
+* The `dataSetId` used by the connections are `5f24c4f6ecffd1XXXXXXXXXX` and `5f1873caa73caaXXXXXXXXXX`.
+* The `type` of data set used by both connections is `event`.
+* The names of the data sets are `Test Dataset` and `analytics_services_functional_testing_object_event`.
+* The `id` of the connections are `dg_b008fd39-2437-4d00-88fd-3924XXXXXXXX` and `dg_7110bb3e-76ce-4201-90bb-3e76XXXXXXXX`.
+* The total number of connections for the org, shown as `totalElements`, are `573`.
 
 ### Request Parameters
 
@@ -298,7 +303,7 @@ The example above responds the following:
 | `sandboxName` |  | string | Filter by sandbox name |
 | `expansion` |  | string | Comma-delimited list of additional fields to include on response. Includes the enums: `name`, `description`, `owner`, `isDeleted`, `isDisabled`, `dataSets`, `createdDate`, `modified`, `caseSensitive`, `organization`, `components`, `numDailyEvents`, `externalData`, `backfillEnabled`, `granularBackfills`, `granularStreaming`, `backfillsSummaryConnection`, `backfillsSummaryDataSets`, `dataSetLastIngested`, `sandboxName`, `sandboxId`, `fieldsId`, `floatPrecision`, `dataRetentionMonths`, `validationErrors`, `resolveIdentityNamespace`, and `stitchedDataSets`. |
 | `includeType` |  | string | Additional connections to include |
-| `cached` |  | boolean | If cached results are returned |
+| `cached` |  | boolean | Whether cached results are returned |
 | `locale` |  | string | A specified locale |
 | `limit` |  | integer | Number of results returned per page |
 | `page` |  | integer | The page returned. The first page is `0`. |
@@ -327,8 +332,8 @@ The example above responds the following:
 | `lookupParentDataSetId` | string |  |
 | `lookupParentDataSetType` | string |  |
 | `identityNamespace` | string |  |
-| `usePrimaryIdNamespace` | boolean | If the primary ID namespace is used |
-| `identityMap` | boolean | If the identity map is used |
+| `usePrimaryIdNamespace` | boolean | Whether the primary ID namespace is used |
+| `identityMap` | boolean | Whether the identity map is used |
 | `name` | string | The name of the data set |
 | `schemaInfo` | container | The information of the given schema. Contains the `schemaId`, `schemaName`, and `schemaRef` parameters. |
 | `schemaId` | string | The schema ID |
@@ -343,8 +348,8 @@ The example above responds the following:
 | `startDate` | string | The starting date of the backfilled data |
 | `endDate` | string | The ending date of the backfilled data |
 | `createdDate` | string | The date the backfill was created |
-| `allData` | boolean | If all data is displayed |
-| `streaming` | boolean | If streaming is enabled |
+| `allData` | boolean | Whether all data is displayed |
+| `streaming` | boolean | Whether streaming is enabled |
 | `backfillSummary` | container | A summary of all attempted backfills. Contains the `total`, `failed`, `inProgress`, `completed`, and `invalid` parameters. |
 | `total` | integer | The number of backfills attempted |
 | `failed` | integer | The number of backfills that failed |
@@ -362,7 +367,7 @@ The example above responds the following:
 | `dataSetId` | string |  |
 | `domain` | string |  |
 | `identityNamespace` | string |  |
-| `usePrimaryIdNamespace` | boolean | If the primary namespace is used |
+| `usePrimaryIdNamespace` | boolean | Whether the primary namespace is used |
 | `identityMap` | boolean |  |
 | `identityNamespaceCol` | string |  |
 | `modifiedDate` | string | The date when the connection was last modified |
@@ -370,12 +375,12 @@ The example above responds the following:
 | `organization` | string | The org ID the connection belongs to |
 | `modifiedBy` | string | The user ID of the person who last modified the connection |
 | `modifiedByFullName` | string | The name of the person who last modified the connection |
-| `caseSensitive` | boolean | If the connection is case sensitive |
+| `caseSensitive` | boolean | Whether the connection is case sensitive |
 | `numDailyEvents` | integer | The number of daily events associated with the connection |
 | `externalData` | container | External data associated with the connection. Contains the `externalId`, and `externalParentId` parameters. |
 | `externalId` | string | The external ID of the connection |
 | `externalParentId` | string | The external ID of the connection |
-| `backfillEnabled` | boolean | If backfill is enabled |
+| `backfillEnabled` | boolean | Whether backfill is enabled |
 | `sandboxId` | string | The sandbox ID |
 | `sandboxName` | string | The sandbox name |
 | `fieldsId` | string | The fields ID |
@@ -399,7 +404,7 @@ The example above responds the following:
 | `totalElements` | integer | The number of connections |
 | `totalPages` | integer | The number of pages to be displayed with the current settings |
 | `numberOfElements` | integer | The number of connections displayed per page |
-| `firstPage` | boolean | If the first page is displayed |
-| `lastPage` | boolean | If the last page is displayed |
-| `sort` |  | If a sort is applied |
+| `firstPage` | boolean | Whether the first page is displayed |
+| `lastPage` | boolean | Whether the last page is displayed |
+| `sort` |  | Whether a sort is applied |
 | `size` | integer | The number of connections displayed on the current page |
