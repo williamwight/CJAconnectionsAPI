@@ -115,7 +115,7 @@ The example response above shows the following:
 | `lookupParentFields` | string | The parent fields used by a lookup data set. This field only applies to a lookup data set. |
 | `lookupParentDataSetId` | string | The parent data set ID used by a lookup data set. This field only applies to a lookup data set. |
 | `lookupParentDataSetType` | string | The type of parent data set used by a lookup data set. This field only applies to a lookup data set. |
-| `identityNamespace` | string | The namespace used by the connection. Please reference the [Create a Connection](https://experienceleague.adobe.com/docs/analytics-platform/using/cja-connections/create-connection.html) documentation for more information regarding Namespaces and Identity Map. |
+| `identityNamespace` | string | The namespace used by the connection. For further information reference the [Create a Connection](https://experienceleague.adobe.com/docs/analytics-platform/using/cja-connections/create-connection.html) documentation for more information regarding Namespaces and Identity Map. |
 | `usePrimaryIdNamespace` | boolean | Whether the primary ID namespace is used |
 | `identityMap` | boolean | Whether the identity map is used |
 | `name` | string | The name of the data set |
@@ -129,8 +129,8 @@ The example response above shows the following:
 | `id` | string | The ID of the backfill |
 | `dataSetId` | string | The data set ID |
 | `status` | string | The status of the backfill |
-| `startDate` | string | The starting date of the backfilled data |
-| `endDate` | string | The ending date of the backfilled data |
+| `startDate` | string | The starting date of the data to be backfilled |
+| `endDate` | string | The ending date of the data to be backfilled  |
 | `createdDate` | string | The date the backfill was created |
 | `allData` | boolean | Whether all data is displayed |
 | `streaming` | boolean | Whether streaming is enabled |
@@ -342,8 +342,8 @@ The example response above shows the following:
 | `id` | string | The ID of the backfill |
 | `dataSetId` | string | The data set ID |
 | `status` | string | The status of the backfill |
-| `startDate` | string | The starting date of the backfilled data |
-| `endDate` | string | The ending date of the backfilled data |
+| `startDate` | string | The starting date of the data to be backfilled |
+| `endDate` | string | The ending date of the data to be backfilled  |
 | `createdDate` | string | The date the backfill was created |
 | `allData` | boolean | Whether all data is displayed |
 | `streaming` | boolean | Whether streaming is enabled |
