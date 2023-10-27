@@ -301,7 +301,7 @@ The example response above shows the following:
 | `expansion` |  | string | Comma-delimited list of additional fields to include on response. Includes the enums: `name`, `description`, `owner`, `isDeleted`, `isDisabled`, `dataSets`, `createdDate`, `modified`, `caseSensitive`, `organization`, `components`, `numDailyEvents`, `externalData`, `backfillEnabled`, `granularBackfills`, `granularStreaming`, `backfillsSummaryConnection`, `backfillsSummaryDataSets`, `dataSetLastIngested`, `sandboxName`, `sandboxId`, `fieldsId`, `floatPrecision`, `dataRetentionMonths`, `validationErrors`, `resolveIdentityNamespace`, and `stitchedDataSets`. |
 | `includeType` |  | string | Additional connections to include |
 | `cached` |  | boolean | Whether cached results are returned |
-| `locale` |  | string | A specified locale |
+| `locale` |  | string | The language to use in the response |
 | `limit` |  | integer | Number of results returned per page |
 | `page` |  | integer | The page returned. The first page is `0`. |
 | `sortDirection` |  | string | Sorting direction. Includes the enums: `ASC` and `DESC`. |
@@ -319,7 +319,7 @@ The GET all connections endpoint response parameters include all of the response
 | `numberOfElements` | integer | The number of connections displayed per page |
 | `firstPage` | boolean | Whether the first page is displayed |
 | `lastPage` | boolean | Whether the last page is displayed |
-| `sort` |  | Whether a sort is applied |
+| `sort` | boolean | Whether a sort is applied |
 | `size` | integer | The number of connections displayed on the current page |
 
 ## GET backfills
@@ -384,7 +384,7 @@ The example above requests the backfills associated with the `dg_47b7fb18-676b-4
 
 #### Response Example Details
 
-The example above responds:
+The example response above returns the following:
 
 * The dataset `6526664c54d56d4d6tXXXXXX` is associated with both backfills.
 * The status of the `76ce8f4f-c19b-4e4a-a524-753827XXXXXX` backfill is `COMPLETED`.
@@ -396,10 +396,10 @@ The example above responds:
 | --- | --- | --- | --- |
 | `connectionId` | required | string | The connection ID |
 | `datasetId` | required | string | The dataset ID |
-| `includeStatus` |  | string | The statuses to include in the response. Includes the enums: `inProgress`, `completed`, `failed`. |
+| `includeStatus` |  | string | The statuses to include in the response. Includes the enums: `inProgress`, `completed`, and `failed`. |
 | `limit` |  | integer | The number of results shown per page |
 | `page` |  | integer | The page returned. The first page is `0`. |
-| `sortDirection` |  | string | Sorting direction. Includes the enums: `ASC`, `DESC`. |
+| `sortDirection` |  | string | Sorting direction. Includes the enums: `ASC` and `DESC`. |
 | `sortProperty` |  | string | The property to sort by. Default value is `createdDate`. |
 
 ### Response Parameters
@@ -497,6 +497,10 @@ curl 'https://cja.adobe.io/data/connections/configurationSettings' \
 }
 ```
 
+#### Request Example Details
+
+The example above requests the data source types associated with the organization.
+
 #### Response Example Details
 
 The example response above returns the data source types for the organization.
@@ -505,7 +509,7 @@ The example response above returns the data source types for the organization.
 
 | Name | Required | Type | Description |
 | --- | --- | --- | --- |
-| `locale` |  | string | A chosen locale. The default value is `en_US`. |
+| `locale` |  | string | The language to use in the response. The default value is `en_US`. |
 
 ### Response Parameters
 
