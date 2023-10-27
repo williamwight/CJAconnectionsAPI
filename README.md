@@ -503,7 +503,7 @@ The example above requests the data source types associated with the organizatio
 
 #### Response Example Details
 
-The example response above returns the data source types for the organization.
+The example response above shows the data source types for the organization.
 
 ### Request Parameters
 
