@@ -5,6 +5,10 @@ description: Manage CJA connections through APIs
 
 # Connections
 
+The CJA Connections APIs allow you to retrieve connections programmatically through Adobe Developer. These APIs use the same data and methods that Adobe uses inside the product UI. See [Connections](https://experienceleague.adobe.com/docs/analytics-platform/using/cja-connections/overview.html) in the Customer Journey Analytics guide for more information.
+
+The endpoints described in this guide are routed through analytics.adobe.io. To use them, you will need to first create a client with access to Customer Journey Analytics APIs. For more information, refer to [Getting started with the Customer Journey Analytics API](https://developer.adobe.com/cja-apis/docs/getting-started).
+
 This guide includes instructions for using the following endpoints:
 
 * GET connection by ID: Retrieve a specific connection by connection ID
