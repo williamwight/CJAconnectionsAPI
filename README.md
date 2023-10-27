@@ -13,7 +13,7 @@ This guide includes instructions for using the following endpoints:
 
 * GET connection by ID: Retrieve a specific connection by connection ID
 * GET all connections: Retrieve all connections for an organization
-* GET backfills: Retrieve all backfills for a data set and connection pair
+* GET backfills: Retrieve all backfills for a data set and connection pair.
 * GET data source types: Retrieve all data source types for an organization
 
 ## GET connection by ID
@@ -31,7 +31,7 @@ Click the **Request** tab in the following example to see a cURL request for thi
 #### Request
 
 ```sh
-curl 'https://cja.adobe.io/data/connections/dg_b008fd39-2437-4d00-88fd-3924XXXXXXXX?expansion=name%2Cdescription%2Cowner%2CdataSets%2CexternalData%2CschemaInfo' \
+curl 'https://cja.adobe.io/data/connections/dg_b008fd39-2437-4d00-88fd-39243785XXXX?expansion=name%2Cdescription%2Cowner%2CdataSets%2CexternalData%2CschemaInfo' \
 -H 'x-api-key: {API_KEY}' \
 -H 'x-gw-ims-org-id: {IMS_ORG_ID}' \
 -H 'Authorization: Bearer {AUTHORIZATION_TOKEN}'
@@ -51,7 +51,7 @@ curl 'https://cja.adobe.io/data/connections/dg_b008fd39-2437-4d00-88fd-3924XXXXX
     },
     "dataSets": [
         {
-            "dataSetId": "5f24c4f6ecffd1XXXXXXXXXX",
+            "dataSetId": "5f24c4f6ecffd11638XXXXXX",
             "domain": "catalog",
             "type": "event",
             "timestampId": "timestamp",
@@ -61,17 +61,17 @@ curl 'https://cja.adobe.io/data/connections/dg_b008fd39-2437-4d00-88fd-3924XXXXX
             "identityMap": false,
             "name": "Test Dataset",
             "schemaInfo": {
-                "schemaId": "https://ns.adobe.com/exampleorg/schemas/105f3200745a921d8bee745227760b0cd8c305XXXXXXXXXX",
+                "schemaId": "https://ns.adobe.com/exampleorg/schemas/105f3200745a921d8bee745227760b0cd8c3055273XXXXXX",
                 "schemaName": "Example Schema"
             },
             "streaming": true
         }
     ],
     "externalData": {
-        "externalId": "b008fd39-2437-4d00-88fd-3924XXXXXXXX"
+        "externalId": "b008fd39-2437-4d00-88fd-39243785XXXX"
     },
-    "idWithoutPrefix": "b008fd39-2437-4d00-88fd-3924XXXXXXXX",
-    "id": "dg_b008fd39-2437-4d00-88fd-3924XXXXXXXX"
+    "idWithoutPrefix": "b008fd39-2437-4d00-88fd-39243785XXXX",
+    "id": "dg_b008fd39-2437-4d00-88fd-39243785XXXX"
 }
 ```
 
@@ -79,7 +79,7 @@ curl 'https://cja.adobe.io/data/connections/dg_b008fd39-2437-4d00-88fd-3924XXXXX
 
 The example above requests the following:
 
-* The information about the connection with the ID `dg_b008fd39-2437-4d00-88fd-3924XXXXXXXX`.
+* The information about the connection with the ID `dg_b008fd39-2437-4d00-88fd-39243785XXXX`.
 * The `dataSets` associated with the connection.
 * The `schemaInfo` associated with the data set.
 
@@ -87,10 +87,10 @@ The example above requests the following:
 
 The example response above shows the following:
 
-* The `dataSetId` used by the connection is `5f24c4f6ecffd1XXXXXXXXXX`.
+* The `dataSetId` used by the connection is `5f24c4f6ecffd11638XXXXXX`.
 * The `type` of data set used is `event`.
 * The name of the schema used by the data set is `Example Schema`.
-* The connection `id` is `dg_b008fd39-2437-4d00-88fd-3924XXXXXXXX`.
+* The connection `id` is `b008fd39-2437-4d00-88fd-39243785XXXX`.
 
 ### Request Parameters
 
