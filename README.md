@@ -111,7 +111,7 @@ The example response above shows the following:
 | `ownerId` | string | The ID of the owner |
 | `name` | string | The name of the owner |
 | `type` | string | The type of user that owns the connection |
-| `dataSets` | container | The information related to the data sets. Contains the `dataSetId`, `domain`, `type`, `timestampId`, `visitorId`, `lookupKeyField`, `lookupParentFields`, `lookupParentDataSetId`, `lookupParentDataSetType`, `identityNamespace`, `usePrimaryIdNamespace`, `identityMap`, `name`, `schemaInfo`, `streaming`, `backfillSummary`, `lastIngestedTime`, `streamingEnabledAt`, `identityNamespaceCol`, and `dataSourceType` parameters. |
+| `dataSets` | container | The information related to the datasets. Contains the `dataSetId`, `domain`, `type`, `timestampId`, `visitorId`, `lookupKeyField`, `lookupParentFields`, `lookupParentDataSetId`, `lookupParentDataSetType`, `identityNamespace`, `usePrimaryIdNamespace`, `identityMap`, `name`, `schemaInfo`, `streaming`, `backfillSummary`, `lastIngestedTime`, `streamingEnabledAt`, `identityNamespaceCol`, and `dataSourceType` parameters. |
 | `dataSetId` | string | The dataset ID |
 | `domain` | string | The domain of the dataset |
 | `type` | string | The type of dataset |
@@ -253,7 +253,7 @@ curl 'https://cja.adobe.io/data/connections?expansion=name%2Cdescription%2Cowner
                     "identityNamespace": "Email",
                     "usePrimaryIdNamespace": false,
                     "identityMap": false,
-                    "name": "analytics_services_functional_testing_object_event",
+                    "name": "example_object_event",
                     "streaming": true
                 }
             ],
@@ -276,19 +276,19 @@ curl 'https://cja.adobe.io/data/connections?expansion=name%2Cdescription%2Cowner
 
 The example above requests the following:
 
-* The `dataSets` associated with the connection to be displayed.
-* The `limit` of connections per page is `2`.
+* The `dataSets` associated with the connection.
+* The `limit` of connections per page to be `2`.
 * The `sortDirection` to be `DESC`, or descending.
 
 #### Response Example Details
 
 The example response above shows the following:
 
-* The `dataSetId` used by the connections are `5f24c4f6ecffd13h6dXXXXXX` and `5f1873caa73caa4hf6XXXXXX`.
+* The `dataSetId` values used by the connections are `5f24c4f6ecffd13h6dXXXXXX` and `5f1873caa73caa4hf6XXXXXX`.
 * The `type` of dataset used by both connections is `event`.
-* The names of the data sets are `Test Dataset` and `analytics_services_functional_testing_object_event`.
-* The `id` of the connections are `dg_b008fd39-2437-4d00-88fd-392434XXXXXX` and `dg_7110bb3e-76ce-4201-90bb-3e7656XXXXXX"`.
-* The total number of connections for the org, shown as `totalElements`, are `573`.
+* The names of the datasets are `Test Dataset` and `example_object_event`.
+* The ID of the connections are `dg_b008fd39-2437-4d00-88fd-392434XXXXXX` and `dg_7110bb3e-76ce-4201-90bb-3e7656XXXXXX"`.
+* The total number of connections for the organization--shown as `totalElements`--are `573`.
 
 ### Request Parameters
 
@@ -304,90 +304,15 @@ The example response above shows the following:
 | `locale` |  | string | A specified locale |
 | `limit` |  | integer | Number of results returned per page |
 | `page` |  | integer | The page returned. The first page is `0`. |
-| `sortDirection` |  | string | Sorting direction. Includes the enums: `ASC`, `DESC`. |
-| `sortProperty` |  | string | The property to sort by. Included the enums: `modifiedDate`, and `id`. |
+| `sortDirection` |  | string | Sorting direction. Includes the enums: `ASC` and `DESC`. |
+| `sortProperty` |  | string | The property to sort by. Included the enums: `modifiedDate` and `id`. |
 
 ### Response Parameters
 
+The GET all connections endpoint response parameters include all of the response parameters shown above for the GET a connection by ID, in addition to the following:
+
 | Name | Type | Description |
 | --- | --- | --- |
-| `name` | string | The connection name |
-| `description` | string | The description of the connection |
-| `owner` | container | The details of the owner of the connection. Contains the `imsUserId`, `ownerId`, `name`, and `type` parameters. |
-| `imsUserId` | string | The IMS user ID of the owner |
-| `ownerId` | string | The ID of the owner |
-| `name` | string | The name of the owner |
-| `type` | string | The type of user that owns the connection |
-| `dataSets` | container | The information related to the data sets. Contains the `dataSetId`, `domain`, `type`, `timestampId`, `visitorId`, `lookupKeyField`, `lookupParentFields`, `lookupParentDataSetId`, `lookupParentDataSetType`, `identityNamespace`, `usePrimaryIdNamespace`, `identityMap`, `name`, `schemaInfo`, `streaming`, `backfillSummary`, `lastIngestedTime`, `streamingEnabledAt`, `identityNamespaceCol`, and `dataSourceType` parameters. |
-| `dataSetId` | string | The dataset ID |
-| `domain` | string | The domain of the dataset |
-| `type` | string | The type of dataset |
-| `timestampId` | string | The ID used for the timestamp |
-| `visitorId` | string | The visitor ID |
-| `lookupKeyField` | string | The key field specified for a lookup dataset |
-| `lookupParentFields` | string | The parent fields specified for a lookup dataset |
-| `lookupParentDataSetId` | string | The parent data set ID specified for a lookup dataset |
-| `lookupParentDataSetType` | string | The parent data set type specified for a lookup dataset |
-| `identityNamespace` | string | The namespace used by the connection. For more information, see Namespace and Identity Map in [Create a Connection](https://experienceleague.adobe.com/docs/analytics-platform/using/cja-connections/create-connection.html). |
-| `usePrimaryIdNamespace` | boolean | Whether the primary ID namespace is used |
-| `identityMap` | boolean | Whether the Identity Map is used |
-| `name` | string | The name of the dataset |
-| `schemaInfo` | container | The schema information. Contains the `schemaId`, `schemaName`, and `schemaRef` parameters. |
-| `schemaId` | string | The schema ID |
-| `schemaName` | string | The schema name |
-| `schemaRef` | container | Contains the `id` and `contentType` parameters. |
-| `id` | string | The ID |
-| `contentType` | string | The type of content |
-| `backfills` | container | Backfills that have been performed with the data. Contains the `id`, `dataSetId`, `status`, `startDate`, `endDate`, `createdDate`, and `allData` parameters. |
-| `id` | string | The ID of the backfill |
-| `dataSetId` | string | The dataset ID |
-| `status` | string | The status of the backfill |
-| `startDate` | string | The starting date of the data to be backfilled |
-| `endDate` | string | The ending date of the data to be backfilled  |
-| `createdDate` | string | The date the backfill was created |
-| `allData` | boolean | Whether all data is displayed |
-| `streaming` | boolean | Whether streaming is enabled |
-| `backfillSummary` | container | A summary of all attempted backfills. Contains the `total`, `failed`, `inProgress`, `completed`, and `invalid` parameters. |
-| `total` | integer | The number of backfills attempted |
-| `failed` | integer | The number of backfills that failed |
-| `inProgress` | integer | The number of backfills in progress |
-| `completed` | integer | The number of backfills completed |
-| `invalid` | boolean | The number of invalid backfills |
-| `lastIngestedTime` | string | The time of the last data ingestion |
-| `streamingEnabledAt` | string | Source of streaming enablement |
-| `identityNamespaceCol` | string | Identity Namespace reference |
-| `dataSourceType` | container | Information for the data source type. Contains the `id`, `type`, and `description` parameters. |
-| `id` | string | The ID of the data source |
-| `type` | string | The type of the data source |
-| `description` | string | The description of the data source |
-| `identityNamespaceData` | container | Contains the `dataSetId`, `domain`, `identityNamespace`, `usePrimaryIdNamespace`, `identityMap`, and `identityNamespaceCol` parameters. |
-| `dataSetId` | string | The dataset ID |
-| `domain` | string | The domain |
-| `identityNamespaceCol` | string | Identity Namespace reference |
-| `modifiedDate` | string | The date when the connection was last modified |
-| `createdDate` | string | The date the connection was created |
-| `organization` | string | The organization associated with the connection |
-| `modifiedBy` | string | The user ID of the person who last modified the connection |
-| `modifiedByFullName` | string | The name of the person who last modified the connection |
-| `caseSensitive` | boolean | Whether the connection is case sensitive |
-| `numDailyEvents` | integer | The number of daily events associated with the connection |
-| `externalData` | container | External data associated with the connection. Contains the `externalId` and `externalParentId` parameters. |
-| `externalId` | string | The external ID of the connection |
-| `externalParentId` | string | The external parent ID of the connection |
-| `backfillEnabled` | boolean | Whether backfill is enabled |
-| `sandboxId` | string | The sandbox ID |
-| `sandboxName` | string | The sandbox name |
-| `fieldsId` | string | The fields ID |
-| `floatPrecision` | integer | he float associated with the precision of including relevant data points |
-| `dataRetentionMonths` | integer | The number of months data is retained prior to being removed |
-| `connectionValidationErrors` | container | Any errors associated with the connection validation. Contains the `errorCode`, `dataSetId`, `dataSetName`, `disallowedField`, and `missingField` parameters. |
-| `errorCode` | string | A given error code |
-| `dataSetId` | string | The dataset ID |
-| `dataSetName` | string | The dataset name |
-| `disallowedField` | string | A field that is not allowed |
-| `missingField` | string | A field that is missing |
-| `idWithoutPrefix` | string | The ID of the connection without the `dg_` prefix |
-| `id` | string | The connection ID |
 | `number` | integer | The page number returned |
 | `totalElements` | integer | The number of connections |
 | `totalPages` | integer | The number of pages to be displayed with the current settings |
@@ -424,8 +349,8 @@ curl 'https://cja.adobe.io/data/connections/dg_47b7fb18-676b-4f04-8fa3-25XXXXXXX
 {
     "content": [
         {
-            "id": "76ce8f4f-c19b-4e4a-a524-75XXXXXXXXXX",
-            "dataSetId": "6526664c54d56dXXXXXXXXXX",
+            "id": "76ce8f4f-c19b-4e4a-a524-753827XXXXXX",
+            "dataSetId": "6526664c54d56d4d6tXXXXXX",
             "status": "COMPLETED",
             "startDate": null,
             "endDate": null,
@@ -433,8 +358,8 @@ curl 'https://cja.adobe.io/data/connections/dg_47b7fb18-676b-4f04-8fa3-25XXXXXXX
             "allData": true
         },
         {
-            "id": "31821999-d1f8-4526-b754-66XXXXXXXXXX",
-            "dataSetId": "6526664c54d56dXXXXXXXXXX",
+            "id": "31821999-d1f8-4526-b754-663562XXXXXX",
+            "dataSetId": "6526664c54d56d4d6tXXXXXX",
             "status": "IN_PROGRESS",
             "startDate": null,
             "endDate": null,
@@ -455,14 +380,14 @@ curl 'https://cja.adobe.io/data/connections/dg_47b7fb18-676b-4f04-8fa3-25XXXXXXX
 
 #### Request Example Details
 
-The example above requests the backfills associated with the `dg_47b7fb18-676b-4f04-8fa3-25XXXXXXXXXX` connection and the `6526664c54d56dXXXXXXXXXX` dataset.
+The example above requests the backfills associated with the `dg_47b7fb18-676b-4f04-8fa3-25XXXXXXXXXX` connection and the `6526664c54d56d4d6tXXXXXX` dataset.
 
 #### Response Example Details
 
 The example above responds:
 
-* The dataset `6526664c54d56dXXXXXXXXXX` is associated with both backfills.
-* The status of the `76ce8f4f-c19b-4e4a-a524-75XXXXXXXXXX` backfill is `COMPLETED`.
+* The dataset `6526664c54d56d4d6tXXXXXX` is associated with both backfills.
+* The status of the `76ce8f4f-c19b-4e4a-a524-753827XXXXXX` backfill is `COMPLETED`.
 * The status of the `31821999-d1f8-4526-b754-66XXXXXXXXXX` backfill is `IN_PROGRESS`.
 
 ### Request Parameters
