@@ -9,6 +9,8 @@ This guide includes instructions for using the following endpoints:
 
 * GET connection by ID: Retrieve a specific connection by connection ID
 * GET all connections: Retrieve all connections for an organization
+* GET backfills: Retrieve all backfills for a data set and connection pair
+* GET data source types: Retrieve all data source types for an organization
 
 ## GET connection by ID
 
@@ -402,3 +404,197 @@ The example response above shows the following:
 | `lastPage` | boolean | Whether the last page is displayed |
 | `sort` |  | Whether a sort is applied |
 | `size` | integer | The number of connections displayed on the current page |
+
+## GET backfills
+
+Use this endpoint to retrieve the backfills for a specified connection and dataset.
+
+`GET https://cja.adobe.io/data/connections/{CONNECTION_ID}/datasets/{DATASET_ID}/backfills`
+
+### Request and Response Examples
+
+Click the **Request** tab in the following example to see a cURL request for this endpoint. Click the **Response** tab to see a successful JSON response for the request.
+
+<CodeBlock slots="heading, code" repeat="2" languages="CURL,JSON"/>
+
+#### Request
+
+```sh
+curl 'https://cja.adobe.io/data/connections/dg_47b7fb18-676b-4f04-8fa3-25XXXXXXXXXX/datasets/6526664c54d56dXXXXXXXXXX/backfills' \
+-H 'x-api-key: {API_KEY}' \
+-H 'x-gw-ims-org-id: {IMS_ORG_ID}' \
+-H 'Authorization: Bearer {AUTHORIZATION_TOKEN}'
+```
+
+#### Response
+
+```JSON
+{
+    "content": [
+        {
+            "id": "76ce8f4f-c19b-4e4a-a524-75XXXXXXXXXX",
+            "dataSetId": "6526664c54d56dXXXXXXXXXX",
+            "status": "COMPLETED",
+            "startDate": null,
+            "endDate": null,
+            "createdDate": "20XX-10-16T14:06:04.816Z",
+            "allData": true
+        },
+        {
+            "id": "31821999-d1f8-4526-b754-66XXXXXXXXXX",
+            "dataSetId": "6526664c54d56dXXXXXXXXXX",
+            "status": "IN_PROGRESS",
+            "startDate": null,
+            "endDate": null,
+            "createdDate": "20XX-10-16T14:42:34.264Z",
+            "allData": true
+        }
+    ],
+    "number": 0,
+    "totalElements": 2,
+    "totalPages": 1,
+    "numberOfElements": 2,
+    "firstPage": true,
+    "lastPage": true,
+    "sort": null,
+    "size": 10
+}
+```
+
+#### Request Example Details
+
+The example above requests the backfills associated with the `dg_47b7fb18-676b-4f04-8fa3-25XXXXXXXXXX` connection and the `6526664c54d56dXXXXXXXXXX` data set.
+
+#### Response Example Details
+
+The example above responds:
+
+* The data set `6526664c54d56dXXXXXXXXXX` is associated with both backfills.
+* The status of the `76ce8f4f-c19b-4e4a-a524-75XXXXXXXXXX` backfill is `COMPLETED`.
+* The status of the `31821999-d1f8-4526-b754-66XXXXXXXXXX` backfill is `IN_PROGRESS`.
+
+### Request Parameters
+
+| Name | Required | Type | Description |
+| --- | --- | --- | --- |
+| `connectionId` | required | string | The connection ID |
+| `datasetId` | required | string | The data set ID |
+| `includeStatus` |  | string | The statuses to include in the response. Includes the enums: `inProgress`, `completed`, `failed`. |
+| `limit` |  | integer | The number of results shown per page |
+| `page` |  | integer | The page returned. The first page is `0`. |
+| `sortDirection` |  | string | Sorting direction. Includes the enums: `ASC`, `DESC`. |
+| `sortProperty` |  | string | The property to sort by. Default value is `createdDate`. |
+
+### Response Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `content` | container | The backfill information. Contains the `id`, `dataSetId`, `status`, `startDate`, `endDate`, `createdDate`, and `allData` parameters. |
+| `id` | string | The backfill ID |
+| `dataSetId` | string | The ID of the data set being backfilled |
+| `status` | string | The status of the backfill |
+| `startDate` | string | The start date |
+| `endDate` | string | The end date |
+| `createdDate` | string | The date the backfill was created |
+| `allData` | boolean | Whether all data is used |
+| `number` | integer | The page returned. The first page is `0`. |
+| `totalElements` | string | The total number of backfills |
+| `totalPages` | string | The total number of pages |
+| `numberOfElements` | string | The number of backfills displayed on the page |
+| `firstPage` | boolean | Whether the first page is displayed |
+| `lastPage` | boolean | Whether the last page is displayed |
+| `sort` | string | The sort direction |
+| `size` | integer | The number of elements to be displayed per page |
+
+## GET data source types
+
+Use this endpoint to retrive the data source types used by an organization.
+
+`GET https://cja.adobe.io/data/connections/configurationSettings`
+
+### Request and Response Examples
+
+Click the **Request** tab in the following example to see a cURL request for this endpoint. Click the **Response** tab to see a successful JSON response for the request.
+
+<CodeBlock slots="heading, code" repeat="2" languages="CURL,JSON"/>
+
+#### Request
+
+```sh
+curl 'https://cja.adobe.io/data/connections/configurationSettings' \
+-H 'x-api-key: {API_KEY}' \
+-H 'x-gw-ims-org-id: {IMS_ORG_ID}' \
+-H 'Authorization: Bearer {AUTHORIZATION_TOKEN}
+```
+
+#### Response
+
+```JSON
+{
+    "dataSourceTypes": [
+        {
+            "id": "webData",
+            "type": "Web Data"
+        },
+        {
+            "id": "mobileAppData",
+            "type": "Mobile App Data"
+        },
+        {
+            "id": "posData",
+            "type": "POS Data"
+        },
+        {
+            "id": "crmData",
+            "type": "CRM Data"
+        },
+        {
+            "id": "surveyData",
+            "type": "Survey Data"
+        },
+        {
+            "id": "productData",
+            "type": "Product Data"
+        },
+        {
+            "id": "callCenterData",
+            "type": "Call Center Data"
+        },
+        {
+            "id": "accountsData",
+            "type": "Accounts Data"
+        },
+        {
+            "id": "transactionData",
+            "type": "Transaction Data"
+        },
+        {
+            "id": "customerFeedbackData",
+            "type": "Customer Feedback Data"
+        },
+        {
+            "id": "other",
+            "type": "Other"
+        }
+    ]
+}
+```
+
+#### Response Example Details
+
+The example response above returns the data source types for the organization.
+
+### Request Parameters
+
+| Name | Required | Type | Description |
+| --- | --- | --- | --- |
+| `locale` |  | string | A chosen locale. The default value is `en_US`. |
+
+### Response Parameters
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `dataSourceTypes` | container | The data source types used by the organization. Contains the `id`, `type`, and `description` parameters. |
+| `id` | string | The ID of the data source |
+| `type` | string | The type of data source |
+| `description` | string | A description of the data source type |
