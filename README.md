@@ -97,8 +97,8 @@ The example response above shows the following:
 | Name | Required | Type | Description |
 | --- | --- | --- | --- |
 | `connectionId` | required | string | The connection ID to lookup |
-| `expansion` |  | string | Comma-delimited list of additional fields to include in the response. Includes the enums: `name`, `description`, `owner`, `isDeleted`, `isDisabled`, `dataSets`, `createdDate`, `modified`, `caseSensitive`, `organization`, `components`, `numDailyEvents`, `externalData`, `backfillEnabled`, `granularBackfills`, `granularStreaming`, `backfillsSummaryConnection`, `backfillsSummaryDataSets`, `dataSetLastIngested`, `sandboxName`, `sandboxId`, `fieldsId`, `floatPrecision`, `dataRetentionMonths`, `validationErrors`, `resolveIdentityNamespace`, `stitchedDataSets`, `ownerFullName`, `schemaInfo`, `tags`. |
-| `locale` |  | string | A specified locale |
+| `expansion` |  | string | Comma-delimited list of additional fields to include in the response. Includes the enums: `name`, `description`, `owner`, `isDeleted`, `isDisabled`, `dataSets`, `createdDate`, `modified`, `caseSensitive`, `organization`, `components`, `numDailyEvents`, `externalData`, `backfillEnabled`, `granularBackfills`, `granularStreaming`, `backfillsSummaryConnection`, `backfillsSummaryDataSets`, `dataSetLastIngested`, `sandboxName`, `sandboxId`, `fieldsId`, `floatPrecision`, `dataRetentionMonths`, `validationErrors`, `resolveIdentityNamespace`, `stitchedDataSets`, `ownerFullName`, `schemaInfo`, and `tags`. |
+| `locale` |  | string | The language to use in the response |
 
 ### Response Parameters
 
@@ -330,10 +330,10 @@ The example response above shows the following:
 | `type` | string | The type of dataset |
 | `timestampId` | string | The ID used for the timestamp |
 | `visitorId` | string | The visitor ID |
-| `lookupKeyField` | string | The key field used by a lookup dataset. This field only applies to a lookup dataset. |
-| `lookupParentFields` | string | The parent fields used by a lookup dataset. This field only applies to a lookup dataset. |
-| `lookupParentDataSetId` | string | The parent dataset ID used by a lookup dataset. This field only applies to a lookup dataset. |
-| `lookupParentDataSetType` | string | The type of parent dataset used by a lookup dataset. This field only applies to a lookup dataset. |
+| `lookupKeyField` | string | The key field specified for a lookup dataset |
+| `lookupParentFields` | string | The parent fields specified for a lookup dataset |
+| `lookupParentDataSetId` | string | The parent data set ID specified for a lookup dataset |
+| `lookupParentDataSetType` | string | The parent data set type specified for a lookup dataset |
 | `identityNamespace` | string | The namespace used by the connection. Please reference the [Create a Connection](https://experienceleague.adobe.com/docs/analytics-platform/using/cja-connections/create-connection.html) documentation for more information regarding Namespaces and Identity Map. |
 | `usePrimaryIdNamespace` | boolean | Whether the primary ID namespace is used |
 | `identityMap` | boolean | Whether the identity map is used |
