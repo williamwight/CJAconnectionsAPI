@@ -79,7 +79,7 @@ curl 'https://cja.adobe.io/data/connections/dg_b008fd39-2437-4d00-88fd-392437XXX
 
 The example above requests the following:
 
-* The information about the connection with the ID `dg_b008fd39-2437-4d00-88fd-392437XXXXXX`.
+* The information associated with the connection ID `dg_b008fd39-2437-4d00-88fd-392437XXXXXX`.
 * The `dataSets` associated with the connection.
 * The `schemaInfo` associated with the dataset.
 
@@ -117,18 +117,18 @@ The example response above shows the following:
 | `type` | string | The type of dataset |
 | `timestampId` | string | The ID used for the timestamp |
 | `visitorId` | string | The visitor ID |
-| `lookupKeyField` | string | The key field used by a lookup dataset. This field only applies to a lookup dataset. |
-| `lookupParentFields` | string | The parent fields used by a lookup dataset. This field only applies to a lookup dataset. |
-| `lookupParentDataSetId` | string | The parent dataset ID used by a lookup dataset. This field only applies to a lookup dataset. |
-| `lookupParentDataSetType` | string | The type of parent dataset used by a lookup dataset. This field only applies to a lookup dataset. |
-| `identityNamespace` | string | The namespace used by the connection. For further information reference the [Create a Connection](https://experienceleague.adobe.com/docs/analytics-platform/using/cja-connections/create-connection.html) documentation for more information regarding Namespaces and Identity Map. |
+| `lookupKeyField` | string | The key field specified for a lookup dataset |
+| `lookupParentFields` | string | The parent fields specified for a lookup dataset |
+| `lookupParentDataSetId` | string | The parent data set ID specified for a lookup dataset |
+| `lookupParentDataSetType` | string | The parent data set type specified for a lookup dataset |
+| `identityNamespace` | string | The namespace used by the connection. For more information, see Namespace and Identity Map in [Create a Connection](https://experienceleague.adobe.com/docs/analytics-platform/using/cja-connections/create-connection.html). |
 | `usePrimaryIdNamespace` | boolean | Whether the primary ID namespace is used |
-| `identityMap` | boolean | Whether the identity map is used |
+| `identityMap` | boolean | Whether the Identity Map is used |
 | `name` | string | The name of the dataset |
-| `schemaInfo` | container | The information of the given schema. Contains the `schemaId`, `schemaName`, and `schemaRef` parameters. |
+| `schemaInfo` | container | The schema information. Contains the `schemaId`, `schemaName`, and `schemaRef` parameters. |
 | `schemaId` | string | The schema ID |
 | `schemaName` | string | The schema name |
-| `schemaRef` | container | Contains the `id`, and `contentType` parameters. |
+| `schemaRef` | container | Contains the `id` and `contentType` parameters. |
 | `id` | string | The ID |
 | `contentType` | string | The type of content |
 | `backfills` | container | Backfills that have been performed with the data. Contains the `id`, `dataSetId`, `status`, `startDate`, `endDate`, `createdDate`, and `allData` parameters. |
@@ -146,51 +146,45 @@ The example response above shows the following:
 | `inProgress` | integer | The number of backfills in progress |
 | `completed` | integer | The number of backfills completed |
 | `invalid` | boolean | The number of invalid backfills |
-| `lastIngestedTime` | string |  |
-| `streamingEnabledAt` | string |  |
-| `identityNamespaceCol` | string |  |
-| `dataSourceType` | container | Information about the data source type. Contains the `id`, `type`, and `description` parameters. |
+| `lastIngestedTime` | string | The time of the last data ingestion |
+| `streamingEnabledAt` | string | Source of streaming enablement |
+| `identityNamespaceCol` | string | Identity Namespace reference |
+| `dataSourceType` | container | Information for the data source type. Contains the `id`, `type`, and `description` parameters. |
 | `id` | string | The ID of the data source |
 | `type` | string | The type of the data source |
 | `description` | string | The description of the data source |
 | `identityNamespaceData` | container | Contains the `dataSetId`, `domain`, `identityNamespace`, `usePrimaryIdNamespace`, `identityMap`, and `identityNamespaceCol` parameters. |
 | `dataSetId` | string | The dataset ID |
-| `domain` | string |  |
-| `identityNamespaceCol` | string |  |
+| `domain` | string | The domain |
+| `identityNamespaceCol` | string | Identity Namespace reference |
 | `modifiedDate` | string | The date when the connection was last modified |
 | `createdDate` | string | The date the connection was created |
-| `organization` | string | The org ID the connection belongs to |
+| `organization` | string | The organization associated with the connection |
 | `modifiedBy` | string | The user ID of the person who last modified the connection |
 | `modifiedByFullName` | string | The name of the person who last modified the connection |
 | `caseSensitive` | boolean | Whether the connection is case sensitive |
 | `numDailyEvents` | integer | The number of daily events associated with the connection |
-| `externalData` | container | External data associated with the connection. Contains the `externalId`, and `externalParentId` parameters. |
+| `externalData` | container | External data associated with the connection. Contains the `externalId` and `externalParentId` parameters. |
 | `externalId` | string | The external ID of the connection |
-| `externalParentId` | string | The external ID of the connection |
+| `externalParentId` | string | The external parent ID of the connection |
 | `backfillEnabled` | boolean | Whether backfill is enabled |
 | `sandboxId` | string | The sandbox ID |
 | `sandboxName` | string | The sandbox name |
 | `fieldsId` | string | The fields ID |
-| `floatPrecision` | integer | The float precision |
-| `dataRetentionMonths` | integer | For how many months data is retained prior to being removed |
+| `floatPrecision` | integer | he float associated with the precision of including relevant data points |
+| `dataRetentionMonths` | integer | The number of months data is retained prior to being removed |
 | `connectionValidationErrors` | container | Any errors associated with the connection validation. Contains the `errorCode`, `dataSetId`, `dataSetName`, `disallowedField`, and `missingField` parameters. |
 | `errorCode` | string | A given error code |
 | `dataSetId` | string | The dataset ID |
 | `dataSetName` | string | The dataset name |
 | `disallowedField` | string | A field that is not allowed |
 | `missingField` | string | A field that is missing |
-| `backfillSummary` | container | A summary of all attempted backfills. Contains the `total`, `failed`, `inProgress`, `completed`, and `invalid` parameters. |
-| `total` | integer | The number of backfills attempted |
-| `failed` | integer | The number of backfills that failed |
-| `inProgress` | integer | The number of backfills in progress |
-| `completed` | integer | The number of backfills completed |
-| `invalid` | boolean | The number of invalid backfills |
 | `idWithoutPrefix` | string | The ID of the connection without the `dg_` prefix |
 | `id` | string | The connection ID |
 
 ## GET all connections
 
-Use this endpoint to retrieve all of the connections associated with an organization.
+Use this endpoint to retrieve all connections associated with an organization.
 
 `GET https://cja.adobe.io/data/connections`
 
@@ -334,14 +328,14 @@ The example response above shows the following:
 | `lookupParentFields` | string | The parent fields specified for a lookup dataset |
 | `lookupParentDataSetId` | string | The parent data set ID specified for a lookup dataset |
 | `lookupParentDataSetType` | string | The parent data set type specified for a lookup dataset |
-| `identityNamespace` | string | The namespace used by the connection. Please reference the [Create a Connection](https://experienceleague.adobe.com/docs/analytics-platform/using/cja-connections/create-connection.html) documentation for more information regarding Namespaces and Identity Map. |
+| `identityNamespace` | string | The namespace used by the connection. For more information, see Namespace and Identity Map in [Create a Connection](https://experienceleague.adobe.com/docs/analytics-platform/using/cja-connections/create-connection.html). |
 | `usePrimaryIdNamespace` | boolean | Whether the primary ID namespace is used |
-| `identityMap` | boolean | Whether the identity map is used |
+| `identityMap` | boolean | Whether the Identity Map is used |
 | `name` | string | The name of the dataset |
-| `schemaInfo` | container | The information of the given schema. Contains the `schemaId`, `schemaName`, and `schemaRef` parameters. |
+| `schemaInfo` | container | The schema information. Contains the `schemaId`, `schemaName`, and `schemaRef` parameters. |
 | `schemaId` | string | The schema ID |
 | `schemaName` | string | The schema name |
-| `schemaRef` | container | Contains the `id`, and `contentType` parameters. |
+| `schemaRef` | container | Contains the `id` and `contentType` parameters. |
 | `id` | string | The ID |
 | `contentType` | string | The type of content |
 | `backfills` | container | Backfills that have been performed with the data. Contains the `id`, `dataSetId`, `status`, `startDate`, `endDate`, `createdDate`, and `allData` parameters. |
@@ -359,45 +353,39 @@ The example response above shows the following:
 | `inProgress` | integer | The number of backfills in progress |
 | `completed` | integer | The number of backfills completed |
 | `invalid` | boolean | The number of invalid backfills |
-| `lastIngestedTime` | string |  |
-| `streamingEnabledAt` | string |  |
-| `identityNamespaceCol` | string |  |
-| `dataSourceType` | container | Information about the data source type. Contains the `id`, `type`, and `description` parameters. |
+| `lastIngestedTime` | string | The time of the last data ingestion |
+| `streamingEnabledAt` | string | Source of streaming enablement |
+| `identityNamespaceCol` | string | Identity Namespace reference |
+| `dataSourceType` | container | Information for the data source type. Contains the `id`, `type`, and `description` parameters. |
 | `id` | string | The ID of the data source |
 | `type` | string | The type of the data source |
 | `description` | string | The description of the data source |
 | `identityNamespaceData` | container | Contains the `dataSetId`, `domain`, `identityNamespace`, `usePrimaryIdNamespace`, `identityMap`, and `identityNamespaceCol` parameters. |
 | `dataSetId` | string | The dataset ID |
-| `domain` | string |  |
-| `identityNamespaceCol` | string |  |
+| `domain` | string | The domain |
+| `identityNamespaceCol` | string | Identity Namespace reference |
 | `modifiedDate` | string | The date when the connection was last modified |
 | `createdDate` | string | The date the connection was created |
-| `organization` | string | The org ID the connection belongs to |
+| `organization` | string | The organization associated with the connection |
 | `modifiedBy` | string | The user ID of the person who last modified the connection |
 | `modifiedByFullName` | string | The name of the person who last modified the connection |
 | `caseSensitive` | boolean | Whether the connection is case sensitive |
 | `numDailyEvents` | integer | The number of daily events associated with the connection |
-| `externalData` | container | External data associated with the connection. Contains the `externalId`, and `externalParentId` parameters. |
+| `externalData` | container | External data associated with the connection. Contains the `externalId` and `externalParentId` parameters. |
 | `externalId` | string | The external ID of the connection |
-| `externalParentId` | string | The external ID of the connection |
+| `externalParentId` | string | The external parent ID of the connection |
 | `backfillEnabled` | boolean | Whether backfill is enabled |
 | `sandboxId` | string | The sandbox ID |
 | `sandboxName` | string | The sandbox name |
 | `fieldsId` | string | The fields ID |
-| `floatPrecision` | integer | The float precision |
-| `dataRetentionMonths` | integer | For how many months data is retained prior to being removed |
+| `floatPrecision` | integer | he float associated with the precision of including relevant data points |
+| `dataRetentionMonths` | integer | The number of months data is retained prior to being removed |
 | `connectionValidationErrors` | container | Any errors associated with the connection validation. Contains the `errorCode`, `dataSetId`, `dataSetName`, `disallowedField`, and `missingField` parameters. |
 | `errorCode` | string | A given error code |
 | `dataSetId` | string | The dataset ID |
 | `dataSetName` | string | The dataset name |
 | `disallowedField` | string | A field that is not allowed |
 | `missingField` | string | A field that is missing |
-| `backfillSummary` | container | A summary of all attempted backfills. Contains the `total`, `failed`, `inProgress`, `completed`, and `invalid` parameters. |
-| `total` | integer | The number of backfills attempted |
-| `failed` | integer | The number of backfills that failed |
-| `inProgress` | integer | The number of backfills in progress |
-| `completed` | integer | The number of backfills completed |
-| `invalid` | boolean | The number of invalid backfills |
 | `idWithoutPrefix` | string | The ID of the connection without the `dg_` prefix |
 | `id` | string | The connection ID |
 | `number` | integer | The page number returned |
