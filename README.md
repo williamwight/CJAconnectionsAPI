@@ -31,7 +31,7 @@ Click the **Request** tab in the following example to see a cURL request for thi
 #### Request
 
 ```sh
-curl 'https://cja.adobe.io/data/connections/dg_b008fd39-2437-4d00-88fd-39243785XXXX?expansion=name%2Cdescription%2Cowner%2CdataSets%2CexternalData%2CschemaInfo' \
+curl 'https://cja.adobe.io/data/connections/dg_b008fd39-2437-4d00-88fd-392437XXXXXX?expansion=name%2Cdescription%2Cowner%2CdataSets%2CexternalData%2CschemaInfo' \
 -H 'x-api-key: {API_KEY}' \
 -H 'x-gw-ims-org-id: {IMS_ORG_ID}' \
 -H 'Authorization: Bearer {AUTHORIZATION_TOKEN}'
@@ -68,10 +68,10 @@ curl 'https://cja.adobe.io/data/connections/dg_b008fd39-2437-4d00-88fd-39243785X
         }
     ],
     "externalData": {
-        "externalId": "b008fd39-2437-4d00-88fd-39243785XXXX"
+        "externalId": "b008fd39-2437-4d00-88fd-392437XXXXXX"
     },
-    "idWithoutPrefix": "b008fd39-2437-4d00-88fd-39243785XXXX",
-    "id": "dg_b008fd39-2437-4d00-88fd-39243785XXXX"
+    "idWithoutPrefix": "b008fd39-2437-4d00-88fd-392437XXXXXX",
+    "id": "dg_b008fd39-2437-4d00-88fd-392437XXXXXX"
 }
 ```
 
@@ -79,7 +79,7 @@ curl 'https://cja.adobe.io/data/connections/dg_b008fd39-2437-4d00-88fd-39243785X
 
 The example above requests the following:
 
-* The information about the connection with the ID `dg_b008fd39-2437-4d00-88fd-39243785XXXX`.
+* The information about the connection with the ID `dg_b008fd39-2437-4d00-88fd-392437XXXXXX`.
 * The `dataSets` associated with the connection.
 * The `schemaInfo` associated with the data set.
 
@@ -87,10 +87,10 @@ The example above requests the following:
 
 The example response above shows the following:
 
-* The `dataSetId` used by the connection is `5f24c4f6ecffd11638XXXXXX`.
+* The `dataSetId` used by the connection is `5f24c4f6ecffd116XXXXXX`.
 * The `type` of data set used is `event`.
 * The name of the schema used by the data set is `Example Schema`.
-* The connection `id` is `b008fd39-2437-4d00-88fd-39243785XXXX`.
+* The connection `id` is `b008fd39-2437-4d00-88fd-392437XXXXXX`.
 
 ### Request Parameters
 
